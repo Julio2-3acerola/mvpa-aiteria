@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tolê Pará — Açaiteria e Sorveteria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600&family=Lobster+Two:wght@700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<style>
+:root{--fg:#fbf3e6;--fg-soft:rgba(251,243,230,.76);--fg-faint:rgba(251,243,230,.5);--shade:#1c0a2a;--rule:rgba(251,243,230,.2);--leaf:#a6e05a;--ease:cubic-bezier(.22,.61,.36,1);--pill-bg:#a6e05a;--pill-fg:#1c0a2a;--p:0;--hw:min(40vw,62vh);--footh:92px;--lime:0;--plum:#2a0f3d;--lime1:#bde64a;--lime2:#7fc41f}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:#240b36;color:var(--fg);font-family:'Bricolage Grotesque','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+
+/* Preloader */
+.boot{position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:var(--shade);transition:opacity .7s var(--ease),visibility .7s}
+.boot.done{opacity:0;visibility:hidden}
+.boot p{font-size:12.5px;letter-spacing:.05em;color:var(--fg-faint)}
+.bar{width:150px;height:2px;background:var(--rule);overflow:hidden;border-radius:2px}
+.bar i{display:block;height:100%;width:100%;background:var(--leaf);transform:scaleX(0);transform-origin:0 50%}
+
+/* Stage */
+.stage{position:fixed;inset:0;z-index:0;overflow:hidden;background:var(--shade);background-image:radial-gradient(46% 40% at calc(15% + var(--p)*70%) calc(25% + var(--p)*45%),rgba(155,61,255,.55),rgba(155,61,255,0) 100%),radial-gradient(40% 36% at calc(85% - var(--p)*60%) calc(80% - var(--p)*50%),rgba(214,64,160,.42),rgba(214,64,160,0) 100%),radial-gradient(30% 28% at 50% calc(50% + var(--p)*20%),rgba(166,224,90,.14),rgba(166,224,90,0) 100%)}
+.stage video{position:absolute;top:50%;left:50%;width:100%;height:100%;transform:translate(-50%,-50%) scale(1.02);object-fit:cover;will-change:transform}
+.stage::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 2px,transparent 2px 26px),repeating-linear-gradient(-45deg,rgba(255,255,255,.035) 0 2px,transparent 2px 26px)}
+.veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(28,10,42,.72) 0%,rgba(28,10,42,.20) 22%,rgba(28,10,42,.20) 78%,rgba(28,10,42,.78) 100%),radial-gradient(100% 80% at 50% 48%,rgba(28,10,42,0) 0%,rgba(28,10,42,.45) 100%),rgba(28,10,42,.22)}
+.grain{position:absolute;inset:-50%;opacity:.13;mix-blend-mode:screen;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.5'/></svg>")}
+
+/* Faixa verde-limão com bordas onduladas */
+.lime{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:var(--lime);background:radial-gradient(55% 50% at 28% 48%,rgba(233,255,130,.75),rgba(233,255,130,0) 72%),linear-gradient(160deg,var(--lime1),var(--lime2))}
+.lime::before,.lime::after{content:"";position:absolute;left:0;right:0;height:120px;background:radial-gradient(circle at 50% 0,var(--plum) 0 22px,transparent 23px) 0 62px/44px 46px repeat-x,linear-gradient(var(--plum),var(--plum)) 0 0/100% 63px no-repeat;animation:wave 16s linear infinite}
+.lime::before{top:0}
+.lime::after{bottom:0;height:150px;transform:scaleY(-1)}
+@keyframes wave{from{background-position:0 62px,0 0}to{background-position:44px 62px,0 0}}
+
+/* AÇAÍ gigante */
+.big{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.big div{white-space:nowrap;font-weight:600;font-size:clamp(120px,26vw,380px);line-height:.92;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px rgba(251,243,230,.15);will-change:transform}
+.big .a{transform:translate3d(calc(-6vw - var(--p)*46vw),0,0)}
+.big .b{transform:translate3d(calc(-64vw + var(--p)*46vw),0,0);color:rgba(155,61,255,.13);-webkit-text-stroke:0}
+.big .c{transform:translate3d(calc(-10vw - var(--p)*38vw),0,0)}
+
+/* Granulado */
+.dots{position:fixed;inset:0;z-index:6;pointer-events:none;overflow:hidden;opacity:0;transition:opacity 1.2s ease .6s}
+.ready .dots{opacity:.9}
+.dots i{position:absolute;border-radius:99px;will-change:transform}
+
+/* Produto */
+.hero{position:fixed;left:50%;top:50%;z-index:10;width:var(--hw);pointer-events:none;opacity:0;will-change:transform,opacity}
+.hero-in{position:relative;animation:float 6s cubic-bezier(.45,0,.55,1) infinite}
+.hero-in::before{content:"";position:absolute;inset:-22%;z-index:-1;background:radial-gradient(circle,rgba(155,61,255,.6),rgba(214,64,160,.2) 45%,rgba(155,61,255,0) 68%);animation:glow 5s ease-in-out infinite}
+.hero img{display:block;width:100%;height:auto;filter:drop-shadow(0 30px 36px rgba(0,0,0,.5))}
+.badge{position:absolute;top:-6%;right:-4%;width:30%;min-width:64px;animation:spin 16s linear infinite;filter:drop-shadow(0 8px 14px rgba(0,0,0,.35));font-family:inherit}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(1.6deg)}}
+@keyframes glow{0%,100%{transform:scale(.92);opacity:.8}50%{transform:scale(1.08);opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(166,224,90,.55)}70%,100%{box-shadow:0 0 0 16px rgba(166,224,90,0)}}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+
+.meter{position:fixed;top:0;left:0;z-index:50;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--leaf);opacity:.9}
+
+/* Header */
+.chrome{position:fixed;left:0;right:0;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:max(14px,calc(env(safe-area-inset-top,0px) + 12px)) clamp(16px,3.4vw,44px) 14px;background:linear-gradient(to bottom,rgba(28,10,42,.94) 0%,rgba(28,10,42,.78) 72%,rgba(28,10,42,0) 100%);transform:translateY(-100%);opacity:0;transition:transform .9s var(--ease) .3s,opacity .9s var(--ease) .3s}
+.ready .chrome{transform:none;opacity:1}
+.mark{display:flex;align-items:center;min-width:0;flex-shrink:1}
+.brand-logo{display:block;width:clamp(76px,9vw,112px);height:auto;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4))}
+.wordmark{font-weight:600;font-size:18px;letter-spacing:-.02em}
+.nav{display:flex;align-items:center;gap:clamp(14px,2.4vw,32px);flex-shrink:0}
+.nav a:not(.pill){color:var(--fg);text-decoration:none;font-size:14.5px;letter-spacing:-.008em;opacity:.88;transition:opacity .3s var(--ease);cursor:pointer}
+.nav a:not(.pill):hover{opacity:1}
+
+/* Botão verde brilhante */
+.pill{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 21px;border-radius:999px;background:linear-gradient(#cdf273,#8fcf24);color:var(--pill-fg);font-family:'Lobster Two',cursive;font-size:17px;font-weight:700;letter-spacing:0;text-decoration:none;white-space:nowrap;border:2px solid #5f9a12;box-shadow:inset 0 2px 0 rgba(255,255,255,.55),0 4px 0 #4d8210,0 10px 18px rgba(0,0,0,.3);-webkit-text-fill-color:var(--pill-fg);cursor:pointer;transition:transform .4s var(--ease),background .3s var(--ease)}
+.pill::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.6) 50%,transparent 70%);transform:translateX(-120%)}
+.pill:hover::after{transform:translateX(120%);transition:transform .8s var(--ease)}
+.pill:hover,.pill:focus-visible{transform:translateY(-2px);background:linear-gradient(#dcf88f,#9ddc2e);color:var(--pill-fg);-webkit-text-fill-color:var(--pill-fg)}
+.pill:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+
+/* Rodapé + faixa */
+.foot{position:fixed;bottom:0;left:0;right:0;z-index:40;display:flex;flex-direction:column;align-items:stretch;padding:16px 0 max(10px,calc(env(safe-area-inset-bottom,0px) + 8px));pointer-events:none;background:linear-gradient(to top,rgba(28,10,42,.92) 0%,rgba(28,10,42,.72) 70%,rgba(28,10,42,0) 100%);transform:translateY(100%);transition:transform .9s var(--ease) .5s}
+.ready .foot{transform:none}
+.mq{overflow:hidden;background:var(--leaf);color:var(--pill-fg);height:32px;display:flex;align-items:center}
+.mq-t{display:flex;white-space:nowrap;width:max-content;animation:mq 38s linear infinite;font-size:12.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase}
+.mq-t span{padding:0 22px}
+@keyframes mq{to{transform:translateX(-25%)}}
+.foot small{padding:8px 16px 0;text-align:center;font-size:12px;letter-spacing:.02em;color:var(--fg-faint)}
+
+/* Painéis */
+.panels{position:fixed;inset:0;z-index:20;pointer-events:none}
+.panel{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left;opacity:0;will-change:opacity,transform;padding:calc(env(safe-area-inset-top,0px) + 96px) 50vw calc(var(--footh) + env(safe-area-inset-bottom,0px) + 12px) clamp(28px,7vw,120px)}
+.panel.r{align-items:flex-end;text-align:right;padding-left:50vw;padding-right:clamp(28px,7vw,120px)}
+.eyebrow{display:flex;flex-wrap:wrap;gap:6px 12px;font-family:'Lobster Two',cursive;font-weight:700;font-size:clamp(20px,2vw,28px);letter-spacing:0;color:var(--leaf);margin-bottom:clamp(14px,1.8vw,22px);max-width:min(46ch,100%)}
+.r .eyebrow,.r .steps,.r .cta{justify-content:flex-end}
+h1{font-weight:600;font-size:clamp(34px,5.8vw,92px);line-height:.98;letter-spacing:-.036em;text-wrap:balance;text-shadow:0 3px 0 rgba(0,0,0,.25)}
+.sub{margin-top:clamp(16px,2vw,26px);font-size:clamp(15px,1.28vw,19px);line-height:1.5;letter-spacing:-.008em;color:var(--fg-soft);max-width:min(44ch,100%);text-wrap:pretty}
+.r .sub{margin-left:auto}
+.cta{margin-top:clamp(24px,3vw,40px);display:flex}
+.cta .pill{height:48px;padding:0 27px;font-size:19px;animation:ring 2.4s ease-out infinite}
+.steps{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(18px,2vw,26px)}
+.steps li{display:flex;align-items:center;gap:8px;padding:7px 14px 7px 8px;border-radius:999px;font-size:13.5px;background:rgba(255,255,255,.09);border:1px solid var(--rule);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .5s var(--ease)}
+.steps li:hover{transform:translateY(-2px)}
+.steps b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--leaf);color:var(--pill-fg);font-size:12px}
+.cards{display:grid;gap:10px;margin-top:clamp(20px,2.4vw,30px);width:min(440px,100%)}
+.card{display:flex;align-items:center;gap:14px;padding:11px 16px 11px 11px;border-radius:18px;background:rgba(255,255,255,.09);border:1px solid var(--rule);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--fg);text-decoration:none;text-align:left;transition:transform .4s var(--ease),border-color .3s,background .3s}
+.card:hover{transform:translateY(-3px);border-color:var(--leaf);background:rgba(255,255,255,.14)}
+.card i{font-style:normal;font-size:21px;width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:rgba(166,224,90,.18);flex-shrink:0}
+.card b{display:block;font-weight:600;font-size:15px}
+.card span{font-size:12.5px;color:var(--fg-soft);overflow-wrap:anywhere}
+.card::after{content:"→";margin-left:auto;color:var(--leaf);transition:transform .3s var(--ease)}
+.card:hover::after{transform:translateX(4px)}
+.map-button{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:10px 15px;border:0;border-radius:.5em;outline:.1em solid #353535;background:#212121;color:#fff;-webkit-text-fill-color:#fff;text-decoration:none;box-shadow:0 0 1em 1em rgba(0,0,0,.1);transition:transform .3s ease-in-out,box-shadow .3s ease-in-out,background .3s ease-in-out}
+.map-button:hover{transform:scale(1.06);background:radial-gradient(circle at bottom,rgba(50,100,180,.5) 10%,#212121 70%);box-shadow:0 0 1em .45em rgba(0,0,0,.1)}
+.map-button:focus-visible{outline:2px solid var(--leaf);outline-offset:3px}
+.map-button .map-icon{display:block;width:1.15em;height:1.15em;flex:0 0 auto;fill:currentColor}
+.card.map-button{width:100%;background:#212121;border:0;border-radius:.5em;text-align:left}
+.card.map-button::after{display:none}
+.card.map-button:hover{border:0;background:radial-gradient(circle at bottom,rgba(50,100,180,.5) 10%,#212121 70%)}
+.card.social-button{width:100%;background:var(--shade);border:0;border-radius:.5em;outline:.1em solid rgba(166,224,90,.42);box-shadow:0 0 1em 1em rgba(0,0,0,.1);transition:transform .3s ease-in-out,box-shadow .3s ease-in-out,background .3s ease-in-out}
+.card.social-button:hover{transform:scale(1.03);background:radial-gradient(circle at bottom,rgba(155,61,255,.5) 10%,var(--shade) 70%);box-shadow:0 0 1em .45em rgba(0,0,0,.1)}
+.card.social-button::after{display:none}
+.social-icon{display:block;width:24px;height:24px;flex:0 0 auto;object-fit:contain}
+.ghost{margin-top:14px;background:none;border:0;color:var(--fg-soft);font:inherit;font-size:13px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.toast{position:fixed;left:50%;z-index:80;bottom:calc(var(--footh) + 16px + env(safe-area-inset-bottom,0px));transform:translate(-50%,12px);opacity:0;padding:10px 18px;border-radius:999px;background:var(--fg);color:var(--shade);font-size:13.5px;font-weight:600;pointer-events:none;transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.track{position:relative;z-index:1;height:560vh;min-height:3200px}
+
+/* Painel 2 sobre o verde */
+.panel.r{color:var(--plum)}
+.panel.r .eyebrow{color:#fff}
+.panel.r h1{color:#fff;text-shadow:0 3px 0 rgba(42,15,61,.4)}
+.panel.r .sub{color:rgba(42,15,61,.85)}
+.panel.r .steps li{background:rgba(42,15,61,.9);color:var(--fg);border-color:transparent}
+
+/* Painel final: logo no centro */
+.panel.fin{align-items:center;justify-content:center;text-align:center;padding:calc(env(safe-area-inset-top,0px) + 96px) clamp(20px,5vw,80px) calc(var(--footh) + env(safe-area-inset-bottom,0px) + 12px)}
+.fin-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:clamp(20px,4vw,64px);width:min(1120px,100%)}
+.fin-col{display:flex;flex-direction:column;align-items:center;gap:10px}
+.fin-col h2{font-family:'Lobster Two',cursive;font-weight:700;font-size:clamp(30px,3.6vw,52px);line-height:1;color:var(--leaf);text-shadow:0 3px 0 rgba(0,0,0,.3)}
+.fin-sub{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:600;font-size:clamp(17px,1.6vw,24px)}
+.fin-col .sub{margin:0 auto 6px;max-width:34ch}
+.fin-col .card{width:min(340px,100%)}
+.fin-col .ghost{margin-top:4px}
+.fin-logo{position:relative;width:clamp(150px,18vw,250px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#4a1a68,#1c0a2a 75%);box-shadow:0 0 0 6px rgba(166,224,90,.25),0 0 60px rgba(155,61,255,.55),inset 0 0 30px rgba(0,0,0,.5);animation:breathe 5s ease-in-out infinite}
+.fin-logo::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px dashed rgba(166,224,90,.55);animation:spin 28s linear infinite}
+.fin-logo img{width:74%;height:auto;object-fit:contain;filter:drop-shadow(0 6px 14px rgba(0,0,0,.45))}
+.fin-logo .wordmark{font-family:'Lobster Two',cursive;font-size:clamp(26px,3vw,40px);color:var(--leaf)}
+
+@media (max-width:900px) and (min-height:521px){
+:root{--hw:min(66vw,30vh)}
+.veil{background:linear-gradient(to bottom,rgba(28,10,42,.78) 0%,rgba(28,10,42,.26) 24%,rgba(28,10,42,.30) 76%,rgba(28,10,42,.84) 100%),radial-gradient(100% 80% at 50% 48%,rgba(28,10,42,0) 0%,rgba(28,10,42,.5) 100%),rgba(28,10,42,.26)}
+.panel,.panel.r{align-items:center;text-align:center;justify-content:flex-end;padding:0 18px calc(var(--footh) + env(safe-area-inset-bottom,0px) + 8px)}
+.panel .eyebrow,.panel .steps,.panel .cta{justify-content:center}
+.panel .sub{margin-left:auto;margin-right:auto}
+h1{font-size:clamp(30px,9.4vw,54px)}
+.cards{width:min(360px,100%);gap:8px;margin-top:16px}
+.card{padding:8px 14px 8px 8px}
+.card i{width:36px;height:36px;font-size:18px}
+.hide-sm{display:none}
+.panel.fin{justify-content:center;padding:calc(env(safe-area-inset-top,0px) + 84px) 16px calc(var(--footh) + env(safe-area-inset-bottom,0px) + 8px)}
+.fin-grid{grid-template-columns:1fr;gap:14px}
+.fin-logo{order:-1;margin:0 auto;width:104px}
+.fin-col h2{font-size:30px}
+}
+@media (max-width:720px){
+.nav a:not(.pill):not(.map-button){display:none}
+.nav .pill{height:38px;padding:0 16px;font-size:15px}
+.nav .map-button{height:38px;padding:0 14px;font-size:13.5px}
+.sub{font-size:15px;max-width:34ch}
+.foot small{font-size:11px}
+}
+@media (max-width:420px){
+.nav .pill{height:36px;padding:0 14px}
+.nav .map-button{height:36px;padding:0 12px;font-size:13px}
+.eyebrow{font-size:18px;max-width:28ch}
+.steps li{font-size:12.5px}
+.cta .pill{width:100%;max-width:280px;height:44px;padding:0 20px;font-size:17px}
+}
+@media (max-height:520px) and (orientation:landscape){
+:root{--hw:min(34vw,64vh);--footh:80px}
+.panel{padding-top:max(72px,calc(env(safe-area-inset-top,0px) + 56px))}
+h1{font-size:clamp(28px,8vh,44px)}
+.sub{margin-top:12px;font-size:14px}
+.cta{margin-top:16px}
+.steps,.cards{margin-top:12px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="boot" id="boot">
+  <div class="bar"><i id="bootBar"></i></div>
+  <p id="bootPct">CARREGANDO 0%</p>
+</div>
+
+<div class="stage" id="stage">
+  <video id="clip" muted playsinline preload="auto" disablepictureinpicture></video>
+  <div class="veil"></div>
+  <div class="grain"></div>
+</div>
+<div class="lime" aria-hidden="true"></div>
+
+<div class="big" aria-hidden="true">
+  <div class="a">AÇAÍ AÇAÍ AÇAÍ AÇAÍ AÇAÍ AÇAÍ AÇAÍ AÇAÍ</div>
+  <div class="b">AÇAÍ AÇAÍ AÇAÍ AÇAÍ AÇAÍ AÇAÍ AÇAÍ AÇAÍ</div>
+  <div class="c">AÇAÍ AÇAÍ AÇAÍ AÇAÍ AÇAÍ AÇAÍ AÇAÍ AÇAÍ</div>
+</div>
+<div class="dots" id="dots" aria-hidden="true"></div>
+
+<div class="hero" id="hero">
+  <div class="hero-in">
+    <img id="heroImg" src="Untitled_design__1_-removebg-preview.png" alt="Açaí">
+    <svg class="badge" viewBox="0 0 100 100" aria-hidden="true">
+      <defs><path id="c" d="M50,50 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0"/></defs>
+      <circle cx="50" cy="50" r="49" fill="#a6e05a"/>
+      <text font-size="9.4" font-weight="600" fill="#1c0a2a"><textPath href="#c" textLength="246" lengthAdjust="spacing">AUTOSERVIÇO • VENHA MONTAR • AUTOSERVIÇO •</textPath></text>
+      <text x="50" y="59" text-anchor="middle" font-size="26" fill="#1c0a2a">&#10047;</text>
+    </svg>
+  </div>
+</div>
+
+<i class="meter" id="meter"></i>
+
+<header class="chrome">
+  <div class="mark"><img class="brand-logo" src="logo-tole.png" alt="Tolê Pará — Açaiteria e Sorveteria" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wordmark',textContent:'Tolê Pará'}))"></div>
+  <nav class="nav">
+    <a data-go="0.5">Como funciona</a>
+    <a data-go="1">Visite</a>
+    <a class="map-button" href="https://maps.app.goo.gl/ZKKLAKjQKDNM1pEf6" target="_blank" rel="noopener"><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="map-icon" aria-hidden="true"><path d="M307 34.8c-11.5 5.1-19 16.6-19 29.2v64H176C78.8 128 0 206.8 0 304C0 417.3 81.5 467.9 100.2 478.1c2.5 1.4 5.3 1.9 8.1 1.9c10.9 0 19.7-8.9 19.7-19.7c0-7.5-4.3-14.4-9.8-19.5C108.8 431.9 96 414.4 96 384c0-53 43-96 96-96h96v64c0 12.6 7.4 24.1 19 29.2s25 3 34.4-5.4l160-144c6.7-6.1 10.6-14.7 10.6-23.8s-3.8-17.7-10.6-23.8l-160-144c-9.4-8.5-22.9-10.6-34.4-5.4z"></path></svg>Como chegar</a>
+  </nav>
+</header>
+
+<main class="panels">
+  <section class="panel" data-panel>
+    <div class="eyebrow">Autoserviço <span>&middot;</span> Açaiteria &amp; Sorveteria</div>
+    <h1>Seu dia fica<br />mais gostoso.</h1>
+    <p class="sub">Açaí e sorvete no autoserviço: monte o copo do seu jeito, com os acompanhamentos que você mais ama.</p>
+    <div class="cta"><a class="pill" data-go="0.5">Como funciona</a></div>
+  </section>
+
+  <section class="panel r" data-panel>
+    <div class="eyebrow">Como funciona</div>
+    <h1>Monte do<br />seu jeito.</h1>
+    <p class="sub">Pegue o copo, sirva o açaí e o sorvete e escolha os acompanhamentos que quiser. Aqui, quem manda no copo é você.</p>
+    <ul class="steps"><li><b>1</b>Pegue o copo</li><li><b>2</b>Monte à vontade</li><li><b>3</b>Pague no caixa</li></ul>
+    <div class="cta"><a class="pill" data-go="1">Onde fica</a></div>
+  </section>
+
+  <section class="panel fin" data-panel>
+    <div class="fin-grid">
+      <div class="fin-col">
+        <h2>Onde encontrar!</h2>
+        <p class="fin-sub">Venha montar o seu copo.</p>
+        <p class="sub hide-sm">Estamos de portas abertas. Veja como chegar antes de vir.</p>
+        <a class="card map-button" href="https://maps.app.goo.gl/ZKKLAKjQKDNM1pEf6" target="_blank" rel="noopener"><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="map-icon" aria-hidden="true"><path d="M307 34.8c-11.5 5.1-19 16.6-19 29.2v64H176C78.8 128 0 206.8 0 304C0 417.3 81.5 467.9 100.2 478.1c2.5 1.4 5.3 1.9 8.1 1.9c10.9 0 19.7-8.9 19.7-19.7c0-7.5-4.3-14.4-9.8-19.5C108.8 431.9 96 414.4 96 384c0-53 43-96 96-96h96v64c0 12.6 7.4 24.1 19 29.2s25 3 34.4-5.4l160-144c6.7-6.1 10.6-14.7 10.6-23.8s-3.8-17.7-10.6-23.8l-160-144c-9.4-8.5-22.9-10.6-34.4-5.4z"></path></svg><div><b>Como chegar</b><span>Ver localização no mapa</span></div></a>
+        <button class="ghost" id="share" type="button">Copiar link do site</button>
+      </div>
+
+      <div class="fin-logo">
+        <img src="logo-tole.png" alt="Tolê Pará — Açaiteria e Sorveteria" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wordmark',textContent:'Tolê Pará'}))">
+      </div>
+
+      <div class="fin-col">
+        <h2>Fale com a gente</h2>
+        <p class="fin-sub">Siga e chame no zap.</p>
+        <p class="sub hide-sm">Tire dúvidas e acompanhe as novidades da Tolê Pará.</p>
+        <a class="card social-button" href="https://www.instagram.com/toleparaacaiteriaesorveteria/" target="_blank" rel="noopener"><img class="social-icon" src="Instagram_logo_2022.svg.webp" alt="" aria-hidden="true"><div><b>Instagram</b><span>@toleparaacaiteriaesorveteria</span></div></a>
+        <a class="card social-button" href="https://wa.me/55XXXXXXXXXXX" target="_blank" rel="noopener"><img class="social-icon" src="WhatsApp.svg.webp" alt="" aria-hidden="true"><div><b>WhatsApp</b><span>Fale com a gente</span></div></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toast">Link do site copiado!</div>
+
+<footer class="foot">
+  <div class="mq"><div class="mq-t" id="mq"><span>Fonte de fibras</span><span>&#10047;</span><span>Antioxidantes naturais da fruta</span><span>&#10047;</span><span>Energia para acompanhar seu dia</span><span>&#10047;</span><span>Uma fruta cheia de nutrientes</span><span>&#10047;</span><span>Autoserviço: monte o seu copo</span><span>&#10047;</span></div></div>
+  <small>Tolê Pará Açaiteria e Sorveteria &nbsp;&middot;&nbsp; @toleparaacaiteriaesorveteria</small>
+</footer>
+
+<div class="track"></div>
+
+<script>
+(function(){ "use strict";
+
+  var VIDEO_URL = "";
+
+  // Se a imagem do produto não carregar, mostra uma ilustração para o site nunca ficar vazio
+  var FALLBACK = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><defs><linearGradient id='g' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%23b45cff'/><stop offset='1' stop-color='%234a1a68'/></linearGradient></defs><path d='M70 190h260l-34 180q-3 16-20 16H124q-17 0-20-16z' fill='%23fbf3e6'/><path d='M60 200q10-120 140-120t140 120z' fill='url(%23g)'/><circle cx='150' cy='120' r='12' fill='%23ff5fa2'/><circle cx='220' cy='105' r='12' fill='%23ffd23f'/><circle cx='260' cy='150' r='11' fill='%23a6e05a'/><circle cx='120' cy='165' r='11' fill='%234cc9f0'/><rect x='195' y='20' width='14' height='80' rx='7' transform='rotate(18 200 60)' fill='%23a6e05a'/></svg>";
+  var heroImg = document.getElementById("heroImg");
+  heroImg.addEventListener("error", function(){ if (heroImg.src.indexOf("data:image/svg") !== 0) heroImg.src = FALLBACK; });
+
+  var clip = document.getElementById("clip");
+  var boot = document.getElementById("boot");
+  var bootBar = document.getElementById("bootBar");
+  var bootPct = document.getElementById("bootPct");
+  var meter = document.getElementById("meter");
+  var hero = document.getElementById("hero");
+  var dotsEl = document.getElementById("dots");
+  var toast = document.getElementById("toast");
+  var root = document.documentElement;
+  var panels = [].slice.call(document.querySelectorAll("[data-panel]"));
+  var kids = panels.map(function(p){ return [].slice.call(p.children); });
+  var stack = window.matchMedia("(max-width:900px) and (min-height:521px)");
+
+  var CUES = [
+    [0.00, 0.00, 0.15, 0.23],
+    [0.35, 0.43, 0.57, 0.65],
+    [0.77, 0.85, 1.10, 1.20]
+  ];
+  var DRIFT = 22;
+
+  var POSES = {
+    d: [[0.08, 24, 2, 1, -6],  [0.50, -24, 0, 1.06, 8],  [0.95, 24, 2, 1.08, -3]],
+    m: [[0.08, 0, -19, 1, -4], [0.50, 0, -21, .94, 6],   [0.95, 0, -24, .84, -2]]
+  };
+
+  function clamp(v,a,b){ return Math.min(b, Math.max(a, v)); }
+  function smooth(t){ return t*t*(3-2*t); }
+  function lerp(a,b,t){ return a + (b-a)*t; }
+  function ramp(p,a,b){
+    if (b <= a) return p >= b ? 1 : 0;
+    return smooth(clamp((p-a)/(b-a),0,1));
+  }
+
+  var progress = 0, seekTo = 0, seekAt = 0, duration = 0, ready = false;
+  var started = false, attached = false, introStart = 0, intro = 0;
+  var mx = 0, my = 0, tx = 0, ty = 0;
+
+  var COL = ["#a6e05a","#ff5fa2","#ffd23f","#4cc9f0","#fbf3e6","#ff8c42"], seed = 7, dots = [];
+  function rnd(){ seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+  for (var d = 0; d < 20; d++){
+    var el = document.createElement("i"), w = 7 + rnd() * 10;
+    el.style.cssText = "left:" + (rnd()*100) + "%;top:" + (rnd()*110) + "%;width:" + w + "px;height:" + (rnd() > .5 ? w : w*.45) + "px;background:" + COL[Math.floor(rnd()*COL.length)];
+    dotsEl.appendChild(el);
+    dots.push({ el: el, depth: .3 + rnd()*1.1, rot: rnd()*180 });
+  }
+
+  function readScroll(){
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    progress = max > 0 ? clamp(window.pageYOffset / max, 0, 1) : 0;
+    if (duration) seekTo = progress * duration;
+  }
+
+  function placeHero(si){
+    var s = stack.matches ? POSES.m : POSES.d, p = progress, a, b, t = 0;
+    if (p <= s[0][0]) a = b = s[0];
+    else if (p >= s[2][0]) a = b = s[2];
+    else {
+      a = p < s[1][0] ? s[0] : s[1]; b = p < s[1][0] ? s[1] : s[2];
+      t = smooth((p - a[0]) / (b[0] - a[0]));
+    }
+    var arc = Math.sin(t * Math.PI);
+    var x = lerp(a[1], b[1], t) * window.innerWidth / 100 + mx * 26;
+    var y = (lerp(a[2], b[2], t) - arc * 7) * window.innerHeight / 100 + my * 18 + (1 - si) * 40;
+    var sc = lerp(a[3], b[3], t) * (1 - .07 * arc) * (.8 + .2 * si);
+    var r = lerp(a[4], b[4], t) + arc * 18 + mx * 3 + (1 - si) * -14;
+    hero.style.opacity = si * (1 - ramp(progress, .76, .84)); // produto sai de cena para a logo ficar no centro
+    hero.style.transform = "translate3d(-50%,-50%,0) translate3d(" + x + "px," + y + "px,0) rotate(" + r + "deg) scale(" + sc + ")";
+  }
+
+  function paint(){
+    meter.style.transform = "scaleX(" + progress + ")";
+    root.style.setProperty("--p", progress.toFixed(4));
+    root.style.setProperty("--lime", (ramp(progress,.28,.38) * (1 - ramp(progress,.64,.72))).toFixed(3));
+    var si = smooth(intro);
+    placeHero(si);
+    for (var j = 0; j < dots.length; j++){
+      var o = dots[j];
+      o.el.style.transform = "translate3d(" + (mx * o.depth * 34) + "px," + (-progress * o.depth * 560) + "px,0) rotate(" + (o.rot + progress * o.depth * 420) + "deg)";
+    }
+    for (var i = 0; i < panels.length; i++){
+      var c = CUES[i], el = panels[i];
+      var enter = ramp(progress, c[0], c[1]);
+      var leave = ramp(progress, c[2], c[3]);
+      if (i === 0) enter = Math.min(enter, intro);
+      var op = enter * (1 - leave);
+      var y2 = (1 - enter) * DRIFT - leave * DRIFT;
+      el.style.opacity = op;
+      el.style.transform = "translate3d(0," + y2 + "px,0)";
+      el.style.pointerEvents = op > 0.6 ? "auto" : "none";
+      for (var k = 0; k < kids[i].length; k++){
+        var e = smooth(clamp(enter * 1.6 - k * 0.22, 0, 1));
+        kids[i][k].style.opacity = e;
+        kids[i][k].style.transform = "translate3d(0," + ((1 - e) * 26) + "px,0)";
+      }
+    }
+  }
+
+  function frame(){
+    if (introStart) intro = clamp((performance.now() - introStart) / 1500, 0, 1);
+    mx += (tx - mx) * 0.06; my += (ty - my) * 0.06;
+    if (ready && duration){
+      var gap = seekTo - seekAt;
+      if (Math.abs(gap) > 0.0008){
+        seekAt += gap * 0.115;
+        if (clip.readyState >= 2 && !clip.seeking){
+          try { clip.currentTime = seekAt; } catch (e) {}
+        }
+      }
+    }
+    paint();
+    requestAnimationFrame(frame);
+  }
+
+  function setProgress(f){
+    bootBar.style.transform = "scaleX(" + f + ")";
+    bootPct.textContent = "CARREGANDO " + Math.round(f * 100) + "%";
+  }
+
+  function start(){
+    if (started) return;
+    started = true;
+    ready = true;
+    boot.classList.add("done");
+    document.body.classList.add("ready");
+    introStart = performance.now();
+    readScroll();
+    seekAt = seekTo;
+  }
+
+  function attach(src){
+    if (attached) return;
+    attached = true;
+    clip.addEventListener("loadedmetadata", function(){
+      duration = clip.duration || 0;
+      clip.pause();
+      readScroll();
+      seekAt = seekTo;
+      try { clip.currentTime = seekAt; } catch (e) {}
+    });
+    clip.addEventListener("loadeddata", start);
+    clip.addEventListener("canplaythrough", start);
+    clip.addEventListener("error", start);
+    clip.src = src;
+    clip.load();
+    setTimeout(start, 12000);
+  }
+
+  function preload(){
+    if (!VIDEO_URL){ setProgress(1); setTimeout(start, 500); return; }
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var bail = setTimeout(function(){
+      if (!attached){ if (ctrl) ctrl.abort(); setProgress(1); attach(VIDEO_URL); }
+    }, 15000);
+    fetch(VIDEO_URL, ctrl ? { signal: ctrl.signal } : undefined).then(function(res){
+      if (!res.ok || !res.body) throw new Error("fetch");
+      var total = parseInt(res.headers.get("content-length"), 10) || 0;
+      var reader = res.body.getReader(), chunks = [], got = 0;
+      return (function pump(){
+        return reader.read().then(function(r){
+          if (r.done) return new Blob(chunks, { type:"video/mp4" });
+          chunks.push(r.value); got += r.value.length;
+          setProgress(total ? got / total : Math.min(got / 11e6, 0.95));
+          return pump();
+        });
+      })();
+    }).then(function(blob){
+      clearTimeout(bail); setProgress(1); attach(URL.createObjectURL(blob));
+    }).catch(function(){
+      clearTimeout(bail); setProgress(1); attach(VIDEO_URL);
+    });
+  }
+
+  function unlock(){
+    var p = clip.play();
+    if (p && p.then) p.then(function(){ clip.pause(); }).catch(function(){});
+    else clip.pause();
+  }
+  ["touchstart","pointerdown","wheel","keydown"].forEach(function(ev){
+    window.addEventListener(ev, unlock, { once:true, passive:true });
+  });
+
+  var mq = document.getElementById("mq"), base = mq.innerHTML;
+  mq.innerHTML = base + base + base + base;
+
+  document.addEventListener("click", function(e){
+    var a = e.target.closest ? e.target.closest("[data-go]") : null;
+    if (!a) return;
+    e.preventDefault();
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    window.scrollTo({ top: parseFloat(a.getAttribute("data-go")) * max, behavior: "smooth" });
+  });
+
+  var tt;
+  document.getElementById("share").addEventListener("click", function(){
+    var url = location.href;
+    function done(){ toast.classList.add("show"); clearTimeout(tt); tt = setTimeout(function(){ toast.classList.remove("show"); }, 2200); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, done);
+    else {
+      try { var t = document.createElement("textarea"); t.value = url; document.body.appendChild(t); t.select(); document.execCommand("copy"); document.body.removeChild(t); } catch (e) {}
+      done();
+    }
+  });
+
+  if (window.matchMedia("(pointer:fine)").matches){
+    window.addEventListener("pointermove", function(e){
+      tx = e.clientX / window.innerWidth - .5;
+      ty = e.clientY / window.innerHeight - .5;
+    }, { passive:true });
+  }
+
+  window.addEventListener("scroll", readScroll, { passive:true });
+  window.addEventListener("resize", readScroll);
+
+  readScroll();
+  paint();
+  preload();
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
