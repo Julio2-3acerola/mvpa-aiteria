@@ -107,6 +107,11 @@ body{background:#240b36;color:var(--fg);font-family:'Poppins','Helvetica Neue',H
 .cup-dot span{display:block;animation:spin 8s linear infinite}
 .cup b{position:relative;z-index:1;text-align:center;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.62);transition:color .4s var(--ease)}
 .cup b.on{color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.35)}
+.cup{height:44px;pointer-events:auto;user-select:none}
+.cup:focus-within{outline:3px solid var(--leaf);outline-offset:3px}
+.cup-control{position:absolute;inset:0;z-index:2;width:100%;height:100%;margin:0;padding:0;border:0;opacity:0;cursor:ew-resize;touch-action:none;appearance:none;-webkit-appearance:none}
+.cup-control::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:38px;height:38px}
+.cup-control::-moz-range-thumb{width:38px;height:38px;border:0}
 @keyframes sheen{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
 .foot small{padding:8px 16px 0;text-align:center;font-size:11.5px;font-weight:500;letter-spacing:.04em;color:var(--fg-faint)}
 
@@ -353,7 +358,8 @@ body.reduced .fin-logo{order:-1;margin:auto;width:160px}
 <div class="toast" id="toast" role="status" aria-live="polite">Link do site copiado!</div>
 
 <footer class="foot">
-  <div class="cup" id="cup" aria-hidden="true"><div class="cup-fill"></div><div class="cup-dot"><span>&#10047;</span></div><b class="on">1 · Pegue o copo</b><b>2 · Monte à vontade</b><b>3 · Pague no caixa</b></div>
+  <div class="cup" id="cup"><div class="cup-fill" aria-hidden="true"></div><div class="cup-dot" aria-hidden="true"><span>&#10047;</span></div><b class="on" aria-hidden="true">1 · Pegue o copo</b><b aria-hidden="true">2 · Monte à vontade</b><b aria-hidden="true">3 · Pague no caixa</b><input class="cup-control" id="scrollControl" type="range" min="0" max="100" step="1" value="0" aria-label="Progresso da apresentação" aria-describedby="scrollControlHint"></div>
+  <span class="sr-only" id="scrollControlHint">Arraste para avançar ou voltar na apresentação. No teclado, use as setas, Home e End.</span>
   <small>Tolê Pará Açaiteria e Sorveteria &nbsp;&middot;&nbsp; @toleparaacaiteriaesorveteria</small>
 </footer>
 
@@ -381,6 +387,7 @@ body.reduced .fin-logo{order:-1;margin:auto;width:160px}
   var bootBar = document.getElementById("bootBar");
   var bootPct = document.getElementById("bootPct");
   var meter = document.getElementById("meter");
+  var scrollControl = document.getElementById("scrollControl");
   var hero = document.getElementById("hero");
   var dotsEl = document.getElementById("dots");
   var toast = document.getElementById("toast");
@@ -453,6 +460,8 @@ body.reduced .fin-logo{order:-1;margin:auto;width:160px}
   }
 
   function paint(){
+    scrollControl.value = Math.round(progress * 100);
+    scrollControl.setAttribute("aria-valuetext", Math.round(progress * 100) + "% — " + (progress >= .67 ? "Visita e contato" : progress >= .34 ? "Como funciona" : "Apresentação"));
     meter.style.transform = "scaleX(" + progress + ")";
     root.style.setProperty("--p", progress.toFixed(4));
     root.style.setProperty("--lime", (ramp(progress,.28,.38) * (1 - ramp(progress,.64,.72))).toFixed(3));
@@ -607,6 +616,17 @@ body.reduced .fin-logo{order:-1;margin:auto;width:160px}
   });
 
   var cupLabels = [].slice.call(document.querySelectorAll("#cup b")), cupStage = -1;
+
+  // O controle nativo oferece arraste por mouse/toque e navegação por teclado.
+  // A mesma posição alimenta a rolagem e todos os efeitos da apresentação.
+  scrollControl.addEventListener("input", function(){
+    var max = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    progress = goal = Number(scrollControl.value) / 100;
+    focusTarget = null;
+    window.scrollTo({ top: progress * max, behavior: "instant" });
+    readScroll();
+    paint();
+  });
 
   var gallery = document.getElementById("galeria");
   document.querySelector("[data-gallery-open]").addEventListener("click",function(){ gallery.showModal(); });
