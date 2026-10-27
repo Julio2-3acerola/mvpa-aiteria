@@ -1,0 +1,237 @@
+{
+  "screens": [
+    {
+      "width": 360,
+      "height": 800,
+      "section": "inicio",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "section": "como-funciona",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "section": "onde-encontrar",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": true,
+      "brokenImages": 0
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "section": "inicio",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "section": "como-funciona",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "section": "onde-encontrar",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": true,
+      "brokenImages": 0
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "section": "inicio",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "section": "como-funciona",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "section": "onde-encontrar",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "section": "inicio",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "section": "como-funciona",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "section": "onde-encontrar",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "section": "inicio",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "section": "como-funciona",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "section": "onde-encontrar",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "section": "inicio",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": true,
+      "brokenImages": 0
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "section": "como-funciona",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": true,
+      "brokenImages": 0
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "section": "onde-encontrar",
+      "animated": true,
+      "opacity": 1,
+      "overflowX": false,
+      "headerOverlap": false,
+      "footerOverlap": false,
+      "scrollable": true,
+      "brokenImages": 0
+    }
+  ],
+  "errors": [],
+  "keyboardTarget": "como-funciona",
+  "gallery": {
+    "open": true,
+    "focusInside": true,
+    "closedByEscape": true
+  },
+  "reduced": {
+    "mediaMatches": true,
+    "enabled": true,
+    "allReadable": true,
+    "animations": 0
+  },
+  "whatsapp": [
+    "https://wa.me/5591999999999?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20a%C3%A7aiteria",
+    "https://wa.me/5591999999999?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20a%C3%A7aiteria"
+  ]
+}

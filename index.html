@@ -4,14 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tolê Pará — Açaiteria e Sorveteria</title>
+<meta name="description" content="Tolê Pará: açaiteria e sorveteria de autoserviço. Monte o copo do seu jeito com açaí, sorvete e os acompanhamentos que você mais ama.">
+<meta name="theme-color" content="#1c0a2a">
+<!-- PENDENTE: domínio HTTPS definitivo para canonical, og:url, URLs absolutas das imagens sociais e sitemap. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Tolê Pará">
+<meta property="og:title" content="Tolê Pará — Açaiteria e Sorveteria">
+<meta property="og:description" content="Açaí e sorvete no autoserviço: monte o copo do seu jeito, com os acompanhamentos que você mais ama.">
+<meta property="og:image" content="./logo-tole.png">
+<meta property="og:image:width" content="500">
+<meta property="og:image:height" content="500">
+<meta property="og:image:alt" content="Tolê Pará — Açaiteria e Sorveteria">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tolê Pará — Açaiteria e Sorveteria">
+<meta name="twitter:description" content="Monte seu copo de açaí e sorvete no autosserviço. Conheça a Tolê Pará e planeje sua visita.">
+<meta name="twitter:image" content="./logo-tole.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"IceCreamShop","name":"Tolê Pará","description":"Açaiteria e sorveteria de autoserviço.","servesCuisine":["Açaí","Sorvete"],"sameAs":["https://www.instagram.com/toleparaacaiteriaesorveteria/"],"hasMap":"https://maps.app.goo.gl/ZKKLAKjQKDNM1pEf6"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="logo-tole.png">
-<link rel="preload" as="image" href="Untitled_design__1_-removebg-preview.png">
+<link rel="preload" as="image" href="logo-tole.webp">
+<link rel="preload" as="image" href="copos-tole.webp">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--fg:#ffffff;--fg-soft:rgba(255,255,255,.82);--fg-faint:rgba(255,255,255,.55);--shade:#1c0a2a;--rule:rgba(255,255,255,.22);--leaf:#b6ee54;--ease:cubic-bezier(.22,.61,.36,1);--pill-bg:#b6ee54;--pill-fg:#1c0a2a;--p:0;--hw:min(40vw,62vh);--footh:92px;--lime:0;--plum:#2a0f3d;--lime1:#c4ee52;--lime2:#82c71f}
 *{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
 body{background:#240b36;color:var(--fg);font-family:'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
 
@@ -98,7 +116,7 @@ body{background:#240b36;color:var(--fg);font-family:'Poppins','Helvetica Neue',H
 .panel.r{align-items:flex-end;text-align:right;padding-left:50vw;padding-right:clamp(28px,7vw,120px)}
 .eyebrow{display:flex;flex-wrap:wrap;gap:6px 12px;font-family:inherit;font-weight:700;font-size:clamp(12px,1vw,15px);letter-spacing:.16em;text-transform:uppercase;color:var(--leaf);margin-bottom:clamp(14px,1.8vw,22px);max-width:min(46ch,100%)}
 .r .eyebrow,.r .steps,.r .cta{justify-content:flex-end}
-h1{font-weight:800;font-size:clamp(32px,5vw,82px);line-height:1.02;letter-spacing:-.025em;text-transform:uppercase;text-wrap:balance;text-shadow:0 4px 0 rgba(0,0,0,.22)}
+h1,.panel>h2{font-weight:800;font-size:clamp(32px,5vw,82px);line-height:1.02;letter-spacing:-.025em;text-transform:uppercase;text-wrap:balance;text-shadow:0 4px 0 rgba(0,0,0,.22)}
 .sub{margin-top:clamp(16px,2vw,26px);font-size:clamp(14px,1.18vw,18px);font-weight:400;line-height:1.65;letter-spacing:0;color:var(--fg-soft);max-width:min(44ch,100%);text-wrap:pretty}
 .r .sub{margin-left:auto}
 .cta{margin-top:clamp(24px,3vw,40px);display:flex}
@@ -136,7 +154,7 @@ h1{font-weight:800;font-size:clamp(32px,5vw,82px);line-height:1.02;letter-spacin
 /* Painel 2 sobre o verde */
 .panel.r{color:var(--plum)}
 .panel.r .eyebrow{color:var(--plum)}
-.panel.r h1{color:#fff;text-shadow:0 4px 0 rgba(42,15,61,.35)}
+.panel.r h1,.panel.r h2{color:#fff;text-shadow:0 4px 0 rgba(42,15,61,.35)}
 .panel.r .sub{color:rgba(42,15,61,.92);font-weight:500}
 .panel.r .steps li{background:rgba(42,15,61,.92);color:#fff;border-color:transparent}
 .panel.r .pill{background:#fff;color:var(--plum);-webkit-text-fill-color:var(--plum)}
@@ -162,7 +180,7 @@ h1{font-weight:800;font-size:clamp(32px,5vw,82px);line-height:1.02;letter-spacin
 .panel,.panel.r{align-items:center;text-align:center;justify-content:flex-end;padding:0 18px calc(var(--footh) + env(safe-area-inset-bottom,0px) + 8px)}
 .panel .eyebrow,.panel .steps,.panel .cta{justify-content:center}
 .panel .sub{margin-left:auto;margin-right:auto}
-h1{font-size:clamp(28px,8.4vw,48px)}
+h1,.panel>h2{font-size:clamp(28px,8.4vw,48px)}
 .cards{width:min(360px,100%);gap:8px;margin-top:16px}
 .card{padding:8px 14px 8px 8px}
 .card i{width:36px;height:36px;font-size:18px}
@@ -191,23 +209,62 @@ h1{font-size:clamp(28px,8.4vw,48px)}
 @media (max-height:520px) and (orientation:landscape){
 :root{--hw:min(34vw,64vh);--footh:80px}
 .panel{padding-top:max(72px,calc(env(safe-area-inset-top,0px) + 56px))}
-h1{font-size:clamp(24px,7vh,40px)}
+h1,.panel>h2{font-size:clamp(24px,7vh,40px)}
 .sub{margin-top:12px;font-size:13px}
 .cta{margin-top:16px}
 .steps,.cards{margin-top:12px}
 }
 body:not(.ready) *,body:not(.ready) *::before,body:not(.ready) *::after{animation-play-state:paused!important}
-@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+/* Acessibilidade, áreas fixas e toque (acrescentado) */
+a:focus-visible,button:focus-visible{outline:3px solid var(--leaf);outline-offset:3px;border-radius:8px}
+.panel,.panel.r,.panel.fin{padding-top:calc(var(--headh,96px) + 12px);padding-bottom:calc(var(--footh,92px) + env(safe-area-inset-bottom,0px) + 12px);overflow-y:auto;overscroll-behavior:auto;justify-content:safe center}
+@media (max-width:900px) and (min-height:521px){.panel,.panel.r{justify-content:safe flex-end}.panel.fin{justify-content:safe center}}
+@media (max-width:720px){.nav .pill,.nav .map-button{height:44px;min-height:44px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.big .a,.big .b,.big .c{transform:none!important}}
+
+/* Pro: mantém o palco animado e reserva a área de leitura entre as barras. */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip-link{position:fixed;left:12px;top:12px;z-index:100;background:#fff;color:var(--shade);padding:12px;transform:translateY(-180%)}
+.skip-link:focus{transform:none}
+.nav a,.ghost{min-height:44px;display:inline-flex;align-items:center}
+.panel,.panel.r,.panel.fin{top:var(--headh,100px);bottom:var(--footh,92px);padding-top:20px;padding-bottom:20px;scrollbar-width:thin}
+.panel>*,.fin-grid{flex-shrink:0}
+.cta{flex-wrap:wrap;align-items:center;gap:12px}
+.gallery-open{background:none;border:1px solid currentColor;border-radius:999px;min-height:48px;padding:10px 20px;color:inherit;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.gallery-dialog{margin:auto;width:min(520px,calc(100% - 32px));max-height:calc(100dvh - 32px);overflow:auto;padding:24px;border:1px solid var(--rule);border-radius:24px;background:#2a0f3d;color:#fff;box-shadow:0 24px 80px #0008;text-align:center}
+.gallery-dialog::backdrop{background:#10051cda}
+.gallery-head{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.gallery-head h2{font-size:28px;text-transform:uppercase}
+.gallery-close{width:48px;height:48px;flex-shrink:0;border:1px solid var(--rule);border-radius:50%;background:transparent;color:#fff;font-size:30px;cursor:pointer}
+.gallery-dialog figure img{display:block;width:min(100%,240px);height:auto;margin:16px auto}
+.gallery-dialog figcaption{font-size:14px;line-height:1.7;color:var(--fg-soft);margin-bottom:24px}
+@media(max-width:720px){.nav{gap:8px}.nav .pill{padding:0 12px;font-size:10px;letter-spacing:.03em}.nav .map-button{padding:0 10px;font-size:10px}.panel .cta{justify-content:center}.brand-logo{width:48px}.nav a.map-button{font-size:10px;letter-spacing:.03em}.fin-col .sub{font-size:13px}.fin-logo{width:min(38vw,140px)}}
+@media(max-width:900px) and (min-height:521px){:root{--hw:min(56vw,26vh)}}
+@media(max-width:420px){.cta .pill{width:auto}.cta{margin-top:18px}.panel .sub{margin-top:12px}.eyebrow{margin-bottom:12px}.steps li{padding-right:10px}}
+/* A preferência explícita do visitante é a única exceção à animação de scroll. */
+body.reduced .hero{display:none}
+body.reduced .panels{position:relative;pointer-events:auto;padding-top:var(--headh,100px);padding-bottom:var(--footh,92px)}
+body.reduced .panel,body.reduced .panel.r,body.reduced .panel.fin{position:relative;inset:auto;min-height:70svh;padding:40px 24px;align-items:center;text-align:center;opacity:1!important;visibility:visible!important;transform:none!important;overflow:visible}
+body.reduced .panel>*{opacity:1!important;transform:none!important}
+body.reduced .panel.r{background:linear-gradient(160deg,var(--lime1),var(--lime2))}
+body.reduced .panel .sub{margin-left:auto;margin-right:auto}
+body.reduced .panel .cta,body.reduced .panel .steps,body.reduced .panel .eyebrow{justify-content:center}
+body.reduced .track,body.reduced .lime,body.reduced .big,body.reduced .dots{display:none}
+body.reduced .fin-grid{grid-template-columns:1fr;gap:24px}
+body.reduced .fin-logo{order:-1;margin:auto;width:160px}
 </style>
+<noscript><style>.boot,.hero,.track,.lime{display:none}.chrome,.foot,.panels,.panel,.panel.r,.panel.fin{position:relative;inset:auto;transform:none;opacity:1}.panel,.panel.r,.panel.fin{padding:32px 20px;color:#fff}.panel.r .sub{color:#fff}.fin-grid{grid-template-columns:1fr}.fin-logo{margin:auto}</style></noscript>
 </head>
 <body>
+<a class="skip-link" href="#inicio" data-go="0">Pular para o conteúdo</a>
 
-<div class="boot" id="boot">
+<div class="boot" id="boot" role="status" aria-live="polite">
   <div class="bar"><i id="bootBar"></i></div>
   <p id="bootPct">CARREGANDO 0%</p>
 </div>
 
-<div class="stage" id="stage">
+<div class="stage" id="stage" aria-hidden="true">
   <video id="clip" muted playsinline preload="auto" disablepictureinpicture></video>
   <div class="veil"></div>
   <div class="grain"></div>
@@ -223,7 +280,7 @@ body:not(.ready) *,body:not(.ready) *::before,body:not(.ready) *::after{animatio
 
 <div class="hero" id="hero">
   <div class="hero-in">
-    <img id="heroImg" src="Untitled_design__1_-removebg-preview.png" alt="Açaí">
+    <img width="447" height="559" id="heroImg" data-essential src="copos-tole.webp" alt="Três copos com sorvete, açaí e acompanhamentos" fetchpriority="high" decoding="async">
     <svg class="badge" viewBox="0 0 100 100" aria-hidden="true">
       <defs><path id="c" d="M50,50 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0"/></defs>
       <circle cx="50" cy="50" r="49" fill="#b6ee54"/>
@@ -236,56 +293,64 @@ body:not(.ready) *,body:not(.ready) *::before,body:not(.ready) *::after{animatio
 <i class="meter" id="meter"></i>
 
 <header class="chrome">
-  <div class="mark"><img class="brand-logo" src="logo-tole.png" alt="Tolê Pará — Açaiteria e Sorveteria" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wordmark',textContent:'Tolê Pará'}))"></div>
-  <nav class="nav">
-    <a data-go="0.5">Como funciona</a>
-    <a data-go="1">Visite</a>
+  <div class="mark"><img width="500" height="500" class="brand-logo" data-essential src="logo-tole.webp" alt="Tolê Pará — Açaiteria e Sorveteria" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wordmark',textContent:'Tolê Pará'}))"></div>
+  <nav class="nav" aria-label="Principal">
+    <a href="#como-funciona" data-go="0.5">Como funciona</a>
+    <a href="#onde-encontrar" data-go="1">Visite</a>
+    <a class="pill" data-whatsapp href="https://wa.me/5591999999999?text=Ol%C3%A1%21%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20a%C3%A7aiteria." target="_blank" rel="noopener">Fale com a gente</a>
     <a class="map-button" href="https://maps.app.goo.gl/ZKKLAKjQKDNM1pEf6" target="_blank" rel="noopener"><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="map-icon" aria-hidden="true"><path d="M307 34.8c-11.5 5.1-19 16.6-19 29.2v64H176C78.8 128 0 206.8 0 304C0 417.3 81.5 467.9 100.2 478.1c2.5 1.4 5.3 1.9 8.1 1.9c10.9 0 19.7-8.9 19.7-19.7c0-7.5-4.3-14.4-9.8-19.5C108.8 431.9 96 414.4 96 384c0-53 43-96 96-96h96v64c0 12.6 7.4 24.1 19 29.2s25 3 34.4-5.4l160-144c6.7-6.1 10.6-14.7 10.6-23.8s-3.8-17.7-10.6-23.8l-160-144c-9.4-8.5-22.9-10.6-34.4-5.4z"></path></svg>Como chegar</a>
   </nav>
 </header>
 
 <main class="panels">
-  <section class="panel" data-panel>
+  <section class="panel" id="inicio" tabindex="-1" data-panel>
     <div class="eyebrow">Autoserviço <span>&middot;</span> Açaiteria &amp; Sorveteria</div>
-    <h1>Seu dia fica<br />mais gostoso.</h1>
+    <h1><span class="sr-only">Tolê Pará: </span>Seu dia fica<br />mais gostoso.</h1>
     <p class="sub">Açaí e sorvete no autoserviço: monte o copo do seu jeito, com os acompanhamentos que você mais ama.</p>
-    <div class="cta"><a class="pill" data-go="0.5">Como funciona</a></div>
+    <div class="cta"><a class="pill" href="#como-funciona" data-go="0.5">Como funciona</a><button class="gallery-open" type="button" data-gallery-open>Veja os copos</button></div>
   </section>
 
-  <section class="panel r" data-panel>
+  <section class="panel r" id="como-funciona" tabindex="-1" data-panel>
     <div class="eyebrow">Como funciona</div>
-    <h1>Monte do<br />seu jeito.</h1>
+    <h2>Monte do<br />seu jeito.</h2>
     <p class="sub">Pegue o copo, sirva o açaí e o sorvete e escolha os acompanhamentos que quiser. Aqui, quem manda no copo é você.</p>
     <ul class="steps"><li><b>1</b>Pegue o copo</li><li><b>2</b>Monte à vontade</li><li><b>3</b>Pague no caixa</li></ul>
-    <div class="cta"><a class="pill" data-go="1">Onde fica</a></div>
+    <div class="cta"><a class="pill" href="#onde-encontrar" data-go="1">Planeje sua visita</a></div>
   </section>
 
-  <section class="panel fin" data-panel>
+  <section class="panel fin" id="onde-encontrar" tabindex="-1" data-panel>
     <div class="fin-grid">
       <div class="fin-col">
         <h2>Onde encontrar!</h2>
         <p class="fin-sub">Venha montar o seu copo.</p>
-        <p class="sub hide-sm">Estamos de portas abertas. Veja como chegar antes de vir.</p>
+        <p class="sub">Veja a localização no mapa. Antes de sair, confirme os horários com a gente.</p>
+        <!-- PENDENTE: endereço e horário reais (não inventados) -->
         <a class="card map-button" href="https://maps.app.goo.gl/ZKKLAKjQKDNM1pEf6" target="_blank" rel="noopener"><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="map-icon" aria-hidden="true"><path d="M307 34.8c-11.5 5.1-19 16.6-19 29.2v64H176C78.8 128 0 206.8 0 304C0 417.3 81.5 467.9 100.2 478.1c2.5 1.4 5.3 1.9 8.1 1.9c10.9 0 19.7-8.9 19.7-19.7c0-7.5-4.3-14.4-9.8-19.5C108.8 431.9 96 414.4 96 384c0-53 43-96 96-96h96v64c0 12.6 7.4 24.1 19 29.2s25 3 34.4-5.4l160-144c6.7-6.1 10.6-14.7 10.6-23.8s-3.8-17.7-10.6-23.8l-160-144c-9.4-8.5-22.9-10.6-34.4-5.4z"></path></svg><div><b>Como chegar</b><span>Ver localização no mapa</span></div></a>
         <button class="ghost" id="share" type="button">Copiar link do site</button>
       </div>
 
       <div class="fin-logo">
-        <img src="logo-tole.png" alt="Tolê Pará — Açaiteria e Sorveteria" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wordmark',textContent:'Tolê Pará'}))">
+        <img width="500" height="500" src="logo-tole.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wordmark',textContent:'Tolê Pará'}))">
       </div>
 
       <div class="fin-col">
         <h2>Fale com a gente</h2>
         <p class="fin-sub">Siga e chame no zap.</p>
-        <p class="sub hide-sm">Tire dúvidas e acompanhe as novidades da Tolê Pará.</p>
-        <a class="card social-button" href="https://www.instagram.com/toleparaacaiteriaesorveteria/" target="_blank" rel="noopener"><img class="social-icon" src="Instagram_logo_2022.svg.webp" alt="" aria-hidden="true"><div><b>Instagram</b><span>@toleparaacaiteriaesorveteria</span></div></a>
-        <a class="card social-button" href="https://wa.me/55XXXXXXXXXXX" target="_blank" rel="noopener"><img class="social-icon" src="WhatsApp.svg.webp" alt="" aria-hidden="true"><div><b>WhatsApp</b><span>Fale com a gente</span></div></a>
+        <p class="sub">Tire dúvidas e acompanhe as novidades da Tolê Pará.</p>
+        <a class="card social-button" href="https://www.instagram.com/toleparaacaiteriaesorveteria/" target="_blank" rel="noopener"><img class="social-icon" loading="lazy" decoding="async" width="26" height="26" src="instagram.webp" alt="" aria-hidden="true"><div><b>Instagram</b><span>@toleparaacaiteriaesorveteria</span></div></a>
+        <a class="card social-button" id="wa" data-whatsapp href="https://wa.me/5591999999999?text=Ol%C3%A1%21%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20a%20a%C3%A7aiteria." target="_blank" rel="noopener"><img class="social-icon" loading="lazy" decoding="async" width="26" height="26" src="whatsapp.webp" alt="" aria-hidden="true"><div><b>WhatsApp</b><span>Fale com a gente</span></div></a>
       </div>
     </div>
   </section>
 </main>
 
-<div class="toast" id="toast">Link do site copiado!</div>
+<dialog class="gallery-dialog" id="galeria" aria-labelledby="gallery-title">
+  <div class="gallery-head"><h2 id="gallery-title">Do seu jeito.</h2><button class="gallery-close" type="button" aria-label="Fechar galeria">×</button></div>
+  <figure><img src="copos-tole.webp" width="447" height="559" loading="lazy" decoding="async" alt="Três copos com diferentes combinações de sorvete, açaí e acompanhamentos"><figcaption>Você escolhe açaí, sorvete e os acompanhamentos para montar seu copo.</figcaption></figure>
+  <a class="pill" href="#onde-encontrar" data-go="1">Quero visitar</a>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite">Link do site copiado!</div>
 
 <footer class="foot">
   <div class="cup" id="cup" aria-hidden="true"><div class="cup-fill"></div><div class="cup-dot"><span>&#10047;</span></div><b class="on">1 · Pegue o copo</b><b>2 · Monte à vontade</b><b>3 · Pague no caixa</b></div>
@@ -298,6 +363,13 @@ body:not(.ready) *,body:not(.ready) *::before,body:not(.ready) *::after{animatio
 (function(){ "use strict";
 
   var VIDEO_URL = "";
+
+  // Integração compartilhada por todos os botões. Somente país, DDD e número.
+  var WHATSAPP = "5591999999999"; // Número de TESTE autorizado; confirmar antes de publicar.
+  var WA_TEXT = "Olá! Gostaria de informações sobre a açaiteria";
+  document.querySelectorAll("[data-whatsapp]").forEach(function(wa){
+    if (/^55\d{10,11}$/.test(WHATSAPP)) { wa.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(WA_TEXT); }
+  });
 
   // Se a imagem do produto não carregar, mostra uma ilustração para o site nunca ficar vazio
   var FALLBACK = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><defs><linearGradient id='g' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%23b45cff'/><stop offset='1' stop-color='%234a1a68'/></linearGradient></defs><path d='M70 190h260l-34 180q-3 16-20 16H124q-17 0-20-16z' fill='%23fbf3e6'/><path d='M60 200q10-120 140-120t140 120z' fill='url(%23g)'/><circle cx='150' cy='120' r='12' fill='%23ff5fa2'/><circle cx='220' cy='105' r='12' fill='%23ffd23f'/><circle cx='260' cy='150' r='11' fill='%23a6e05a'/><circle cx='120' cy='165' r='11' fill='%234cc9f0'/><rect x='195' y='20' width='14' height='80' rx='7' transform='rotate(18 200 60)' fill='%23a6e05a'/></svg>";
@@ -316,13 +388,19 @@ body:not(.ready) *,body:not(.ready) *::before,body:not(.ready) *::after{animatio
   var panels = [].slice.call(document.querySelectorAll("[data-panel]"));
   var kids = panels.map(function(p){ return [].slice.call(p.children); });
   var stack = window.matchMedia("(max-width:900px) and (min-height:521px)");
+  var rm = window.matchMedia("(prefers-reduced-motion:reduce)");
+  var headEl = document.querySelector(".chrome"), footEl = document.querySelector(".foot");
+  function updateMotion(){ document.body.classList.toggle("reduced",rm.matches); }
+  updateMotion();
+  rm.addEventListener("change",function(){ updateMotion(); measure(); readScroll(); });
+  function measure(){ root.style.setProperty("--headh", headEl.offsetHeight + "px"); root.style.setProperty("--footh", footEl.offsetHeight + "px"); }
 
   var CUES = [
     [0.00, 0.00, 0.15, 0.23],
     [0.35, 0.43, 0.57, 0.65],
     [0.77, 0.85, 1.10, 1.20]
   ];
-  var DRIFT = 22;
+  var DRIFT = 22, focusTarget = null;
 
   var POSES = {
     d: [[0.08, 24, 2, 1, -6],  [0.50, -24, 0, 1.06, 8],  [0.95, 24, 2, 1.08, -3]],
@@ -381,34 +459,39 @@ body:not(.ready) *,body:not(.ready) *::before,body:not(.ready) *::after{animatio
     var st = progress >= .67 ? 2 : progress >= .34 ? 1 : 0;
     if (st !== cupStage){ cupStage = st; for (var q = 0; q < cupLabels.length; q++) cupLabels[q].classList.toggle("on", q <= st); }
     var si = smooth(intro);
-    placeHero(si);
+    if (!rm.matches) placeHero(si);
     for (var j = 0; j < dots.length; j++){
       var o = dots[j];
-      o.el.style.transform = "translate3d(" + (mx * o.depth * 34) + "px," + (-progress * o.depth * 560) + "px,0) rotate(" + (o.rot + progress * o.depth * 420) + "deg)";
+      o.el.style.transform = rm.matches ? "none" : "translate3d(" + (mx * o.depth * 34) + "px," + (-progress * o.depth * 560) + "px,0) rotate(" + (o.rot + progress * o.depth * 420) + "deg)";
     }
     for (var i = 0; i < panels.length; i++){
       var c = CUES[i], el = panels[i];
+      if (rm.matches){ el.inert=false; el.style.pointerEvents="auto"; continue; }
       var enter = ramp(progress, c[0], c[1]);
       var leave = ramp(progress, c[2], c[3]);
       if (i === 0) enter = Math.min(enter, intro);
       var op = enter * (1 - leave);
-      var y2 = (1 - enter) * DRIFT - leave * DRIFT;
+      var y2 = rm.matches ? 0 : (1 - enter) * DRIFT - leave * DRIFT;
       el.style.opacity = op;
+      el.inert = op <= 0.6;
+      if (focusTarget === el && op > .95){ el.focus({preventScroll:true}); focusTarget=null; }
+      el.style.visibility = op > 0.02 ? "visible" : "hidden";
       el.style.transform = "translate3d(0," + y2 + "px,0)";
       el.style.pointerEvents = op > 0.6 ? "auto" : "none";
       for (var k = 0; k < kids[i].length; k++){
-        var e = smooth(clamp(enter * 1.6 - k * 0.22, 0, 1));
+        var e = rm.matches ? enter : smooth(clamp(enter * 1.6 - k * 0.22, 0, 1));
         kids[i][k].style.opacity = e;
-        kids[i][k].style.transform = "translate3d(0," + ((1 - e) * 26) + "px,0)";
+        kids[i][k].style.transform = "translate3d(0," + (rm.matches ? 0 : (1 - e) * 26) + "px,0)";
       }
     }
   }
 
   function frame(){
-    if (introStart) intro = clamp((performance.now() - introStart) / 1500, 0, 1);
-    mx += (tx - mx) * 0.06; my += (ty - my) * 0.06;
+    if (document.body.classList.contains("reduced") !== rm.matches) updateMotion();
+    if (introStart) intro = rm.matches ? 1 : clamp((performance.now() - introStart) / 1500, 0, 1);
+    if (rm.matches){ mx = my = 0; } else { mx += (tx - mx) * 0.06; my += (ty - my) * 0.06; }
     var dg = goal - progress;
-    progress = Math.abs(dg) < 0.0003 ? goal : progress + dg * 0.075;
+    progress = (rm.matches || Math.abs(dg) < 0.0003) ? goal : progress + dg * 0.075;
     if (duration) seekTo = progress * duration;
     if (ready && duration){
       var gap = seekTo - seekAt;
@@ -435,36 +518,38 @@ body:not(.ready) *,body:not(.ready) *::before,body:not(.ready) *::after{animatio
     ready = true;
     boot.classList.add("done");
     document.body.classList.add("ready");
-    introStart = performance.now();
+    introStart = performance.now(); measure();
+    if(location.hash){ var link=[].slice.call(document.querySelectorAll("[data-go]")).find(function(a){return a.getAttribute("href")===location.hash;});if(link && !rm.matches) link.click(); }
     readScroll();
     seekAt = seekTo;
   }
 
   var seen = false; try { seen = localStorage.getItem("tole_seen") === "1"; } catch (e) {}
-  var MIN_LOAD = seen ? 600 : 3600, vidFrac = 0, videoDone = !VIDEO_URL, assetsDone = false, shown = 0, t0 = performance.now();
+  var MIN_LOAD = 0, vidFrac = 0, videoDone = !VIDEO_URL, assetsDone = false, shown = 0, t0 = performance.now();
   function start(){ videoDone = true; }
 
   function waitAssets(){
-    var jobs = [].slice.call(document.images).map(function(img){
+    // só o essencial (produto e logo do cabeçalho) bloqueia a abertura; o resto carrega sob demanda
+    var jobs = [].slice.call(document.querySelectorAll("img[data-essential]")).map(function(img){
       return new Promise(function(ok){
         function fin(){ (img.decode ? img.decode().catch(function(){}) : Promise.resolve()).then(ok); }
         if (img.complete) fin();
         else { img.addEventListener("load", fin, { once:true }); img.addEventListener("error", ok, { once:true }); }
       });
     });
-    if (document.fonts && document.fonts.ready) jobs.push(document.fonts.ready.catch(function(){}));
+    // A fonte externa não bloqueia a apresentação; a pilha local mantém a leitura.
     Promise.all(jobs).then(function(){ assetsDone = true; }, function(){ assetsDone = true; });
-    setTimeout(function(){ assetsDone = true; }, 9000);
+    setTimeout(function(){ assetsDone = true; }, 4000);
   }
 
   function bootTick(){
     var el = performance.now() - t0;
     var done = assetsDone && videoDone;
     var cap = done ? 1 : (VIDEO_URL && !videoDone ? Math.min(.92, .1 + vidFrac * .82) : .92);
-    var target = Math.min(el / MIN_LOAD, cap);
-    shown += (target - shown) * (seen ? .2 : .07);
+    var target = Math.min(MIN_LOAD ? el / MIN_LOAD : 1, cap);
+    shown += (target - shown) * .4;
     setProgress(shown);
-    if ((done && el >= MIN_LOAD && shown > .985) || el > 20000){ setProgress(1); reveal(); return; }
+    if (done || el > 4000){ setProgress(1); reveal(); return; }
     requestAnimationFrame(bootTick);
   }
 
@@ -512,6 +597,7 @@ body:not(.ready) *,body:not(.ready) *::before,body:not(.ready) *::after{animatio
   }
 
   function unlock(){
+    if (!VIDEO_URL) return;
     var p = clip.play();
     if (p && p.then) p.then(function(){ clip.pause(); }).catch(function(){});
     else clip.pause();
@@ -522,21 +608,31 @@ body:not(.ready) *,body:not(.ready) *::before,body:not(.ready) *::after{animatio
 
   var cupLabels = [].slice.call(document.querySelectorAll("#cup b")), cupStage = -1;
 
+  var gallery = document.getElementById("galeria");
+  document.querySelector("[data-gallery-open]").addEventListener("click",function(){ gallery.showModal(); });
+  gallery.querySelector(".gallery-close").addEventListener("click",function(){ gallery.close(); });
+  gallery.addEventListener("click",function(e){ if(e.target===gallery){var r=gallery.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) gallery.close();} });
   document.addEventListener("click", function(e){
     var a = e.target.closest ? e.target.closest("[data-go]") : null;
     if (!a) return;
+    if (gallery.open) gallery.close();
+    if (rm.matches) return;
     e.preventDefault();
+    var target = document.querySelector(a.getAttribute("href"));
+    history.replaceState(null,"",a.getAttribute("href"));
+    if (target){ focusTarget=target; }
     var max = document.documentElement.scrollHeight - window.innerHeight;
-    window.scrollTo({ top: parseFloat(a.getAttribute("data-go")) * max, behavior: "smooth" });
+    window.scrollTo({ top: parseFloat(a.getAttribute("data-go")) * max, behavior: rm.matches ? "auto" : "smooth" });
   });
 
   var tt;
   document.getElementById("share").addEventListener("click", function(){
     var url = location.href;
+    toast.textContent="Link do site copiado!";
     function done(){ toast.classList.add("show"); clearTimeout(tt); tt = setTimeout(function(){ toast.classList.remove("show"); }, 2200); }
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, done);
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done,function(){toast.textContent="Não foi possível copiar. Copie o endereço do navegador.";done();});
     else {
-      try { var t = document.createElement("textarea"); t.value = url; document.body.appendChild(t); t.select(); document.execCommand("copy"); document.body.removeChild(t); } catch (e) {}
+      try { var t = document.createElement("textarea"); t.value = url; document.body.appendChild(t); t.select(); if(!document.execCommand("copy")) throw new Error("copy"); document.body.removeChild(t); } catch (e) { if(t && t.isConnected) t.remove(); toast.textContent="Não foi possível copiar. Copie o endereço do navegador."; }
       done();
     }
   });
@@ -549,8 +645,10 @@ body:not(.ready) *,body:not(.ready) *::before,body:not(.ready) *::after{animatio
   }
 
   window.addEventListener("scroll", readScroll, { passive:true });
-  window.addEventListener("resize", readScroll);
+  window.addEventListener("resize", function(){ measure(); readScroll(); });
 
+  if(document.fonts) document.fonts.ready.then(measure);
+  measure();
   readScroll();
   paint();
   preload();
